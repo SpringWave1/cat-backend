@@ -1,2 +1,4 @@
-This is the RESTFUL server for cat.
-Using nodejs.
+Cat backend
+======
+- The RESTFUL server for cat.
+- Using nodejs.
