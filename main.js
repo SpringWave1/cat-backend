@@ -1,7 +1,8 @@
+// procide connection and DBUtil
+
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-
 
 //设置跨域访问 
 app.all('*', function(req, res, next) {
@@ -13,7 +14,6 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -22,15 +22,8 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
-connection.query('select * from skin', function (error, results) {
-    if (error) throw error;
-    app.get('/',function (req, res) {
-        res.send(results);
-    })
-});
 
-app.listen('5000', function () {
-    console.log('启动服务 http://localhost:5000');
-});
+module.exports.connection = connection;
+module.exports.app = app;
 
 
